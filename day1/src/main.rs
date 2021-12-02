@@ -2,9 +2,7 @@ use std::env;
 use std::fs;
 use std::io::{BufRead, BufReader};
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
-    let filename = &args[1];
+fn part1(filename: &std::string::String){
     let file = fs::File::open(filename).unwrap();
     let reader = BufReader::new(file);
     let mut ct: u16 = 0;
@@ -18,4 +16,9 @@ fn main() {
         last = cur_measurement;
     }
     println!("Measurements larger than last: {}", ct);
+}
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    let filename = &args[1];
+    part1(filename);
 }
